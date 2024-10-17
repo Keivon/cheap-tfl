@@ -29,7 +29,7 @@ export default function Home() {
 
 
   const [data, setData] = useState<FareData>({});
-  const [searchScreen_h, setSearchScreen_h] = useState("screen");
+  const [searchScreen_h, setSearchScreen_h] = useState("h-[100vh]");
   const [svgprops, setSvgProps] = useState<CheapTflSvgProps>({});
 
 
@@ -84,7 +84,7 @@ export default function Home() {
   }
 
   const changeViewOnSearch = () => {
-    setSearchScreen_h("[20vh]");
+    setSearchScreen_h("h-[20vh]");
     setSvgProps({ width: "58.5892886390718", height: "104.915625" });
   }
 
@@ -92,7 +92,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className={`flex justify-center items-center h-[20vh]`}>
+      <div className={`flex justify-center items-center transition-all duration-700 ease-in-out ${searchScreen_h} ? 'h-100vh' : h-20vh`}>
         <div className='text-center'>
           <CheapTflSvg {...svgprops} />
           <br />
@@ -138,6 +138,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
+      { searchScreen_h === "h-[20vh]" &&
       <div className='flex'>
         <div className='h-[70vh] w-[60vw]'>
 
@@ -174,6 +175,7 @@ export default function Home() {
           }
         </div>
       </div>
+}
 
     </div>
 
