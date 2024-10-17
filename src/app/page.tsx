@@ -22,6 +22,8 @@ export default function Home() {
   const [stations, setStations] = useState<string[]>([]);
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
+  const [fromOption, setFromOption] = useState("");
+  const [toOption, setToOption] = useState("");
   const [searchScreen_h, setSearchScreen_h] = useState("screen");
 
   
@@ -44,19 +46,21 @@ export default function Home() {
   }, [to]);
 
   const search = async () => {
-    if (from && to) {
+    console.log(fromOption, toOption);
+    if (fromOption && toOption) {
       //fetch data
       console.log("fetching data");
       fetch("https://cheap-tfl.keivon-991.workers.dev/api", {
         method: "POST",
         body: JSON.stringify({
-          "to":to,
-          "from":from
+          "to":toOption,
+          "from":fromOption
         }),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data["88"]);
+          console.log(data);
+          setSearchScreen_h("screen 1/4");
         });
       
     } else {
@@ -74,7 +78,7 @@ export default function Home() {
       <br />
       </div>
       <div className='flex space-x-4 ml-9'>
-      <Select onValueChange={(value) => value}>
+      <Select onValueChange={(value) => setFromOption(value)}>
       <SelectTrigger className="w-[180px] text-[#137dc5]">
       <SelectValue placeholder="From" />
       </SelectTrigger>
@@ -90,7 +94,7 @@ export default function Home() {
       </SelectContent>
     </Select>
 
-    <Select onValueChange={(value) => value}>
+    <Select onValueChange={(value) => setToOption(value)}>
       <SelectTrigger className="w-[180px] text-[#137dc5] ">
       <SelectValue placeholder="To"  />
       </SelectTrigger>
