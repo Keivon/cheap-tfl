@@ -63,6 +63,7 @@ export default function Home() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          console.log(data["111"]);
           if (svgprops.width !== "58.5892886390718") {
             changeViewOnSearch();
           }
@@ -130,10 +131,22 @@ export default function Home() {
       </div>
       <div className='flex'>
         <div className='h-[70vh] w-[60vw]'>
+          
 
         </div>
 
         <div className='h-[70vh]  w-[40vw] border-l border-[#fb9c2a]'>
+          <h2 className='text-[#137dc5] text-2xl text-center'>Results</h2>
+          <br/>
+          <h3 className='text-[#137dc5] text-2xl ml-2'>Standard fare:</h3>
+          <p className='text-[#137dc5] text-2xl ml-4'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices, nunc vel tincidunt ultricies, nunc velit tinc
+          </p>
+          <br/>
+          <h3 className='text-[#137dc5] text-2xl ml-2'>Alternatives fare:</h3>
+          <p className='text-[#137dc5] text-2xl ml-4'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices, nunc vel tincidunt ultricies, nunc velit tinc
+          </p>
         </div>
       </div>
 
