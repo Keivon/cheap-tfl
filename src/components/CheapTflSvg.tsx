@@ -1,9 +1,5 @@
 
-
-interface CheapTflSvgProps {
-    width?: string;
-    height?: string;
-  }
+import {CheapTflSvgProps} from '../types/types';
   
   const CheapTflSvg: React.FC<CheapTflSvgProps> = ({ width = "258.589px", height = "304.916px" }) => (
     <svg width={width} height={height} viewBox="0 0 255.2685710362026 301">

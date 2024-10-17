@@ -1,6 +1,7 @@
 "use client"
 
 import CheapTflSvg from '../components/CheapTflSvg';
+import { CheapTflSvgProps } from '../types/types';
 import { useState, useEffect } from 'react';
 import init, { find_closest_string } from "../lib/pkg";
 import { Button } from "@/components/ui/button"
@@ -25,6 +26,7 @@ export default function Home() {
   const [fromOption, setFromOption] = useState("");
   const [toOption, setToOption] = useState("");
   const [searchScreen_h, setSearchScreen_h] = useState("screen");
+  const [svgprops, setSvgProps] = useState<CheapTflSvgProps>({});
 
   
 
@@ -60,12 +62,20 @@ export default function Home() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          setSearchScreen_h("screen 1/4");
+          if(svgprops.width !== "58.5892886390718") {
+            console.log("changing view");
+          changeViewOnSearch();
+          }
         });
       
     } else {
       console.log("Please select a station");
     }
+  }
+
+  const changeViewOnSearch = () => {
+    setSearchScreen_h("-[10vh]");
+    setSvgProps({width: "58.5892886390718", height: "104.915625"});
   }
 
 
@@ -74,7 +84,7 @@ export default function Home() {
     
     <div className={`flex justify-center items-center h-${searchScreen_h}`}>
       <div className='text-center'>
-      <CheapTflSvg />
+      <CheapTflSvg {...svgprops} />
       <br />
       </div>
       <div className='flex space-x-4 ml-9'>
