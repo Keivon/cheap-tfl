@@ -1,7 +1,7 @@
 
 import {CheapTflSvgProps} from '../types/types';
   
-  const CheapTflSvg: React.FC<CheapTflSvgProps> = ({ width = "258.589px", height = "304.916px" }) => (
+  const CheapTflSvg: React.FC<CheapTflSvgProps> = ({width= "58.5892886390718", height= "104.915625"}) => (
     <svg width={width} height={height} viewBox="0 0 255.2685710362026 301">
     <defs id="SvgjsDefs1267">
         <linearGradient id="SvgjsLinearGradient1276">
