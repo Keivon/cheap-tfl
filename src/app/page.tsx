@@ -67,7 +67,7 @@ export default function Home() {
 
 
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='flex justify-center items-center h-[10vh]'>
       <div className='text-center'>
         <CheapTflSvg />
         <br />

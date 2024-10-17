@@ -1,7 +1,12 @@
-import React from 'react';
 
-const CheapTflSvg: React.FC = () => (
-    <svg width="258.5892886390718" height="304.915625" viewBox="0 0 255.2685710362026 301">
+
+interface CheapTflSvgProps {
+    width?: string;
+    height?: string;
+  }
+  
+  const CheapTflSvg: React.FC<CheapTflSvgProps> = ({ width = "258.589px", height = "304.916px" }) => (
+    <svg width={width} height={height} viewBox="0 0 255.2685710362026 301">
     <defs id="SvgjsDefs1267">
         <linearGradient id="SvgjsLinearGradient1276">
             <stop id="SvgjsStop1277" stopColor="#2d388a" offset="0"></stop>
