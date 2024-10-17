@@ -144,12 +144,12 @@ export default function Home() {
 
         </div>
 
-        <div className='h-[70vh]  w-[40vw] border-l border-[#fb9c2a]'>
+        <div className='h-[70vh] w-[40vw] border-l border-[#fb9c2a] overflow-y-scroll'>
           <h2 className='text-[#137dc5] text-2xl text-center'>Results</h2>
           <br />
           <h3 className='text-[#137dc5] text-2xl ml-2'>Standard fare:</h3>
           {data["31"] && //Will only show if data[31] is available
-            <p className='text-[#137dc5] text-2x ml-4'>
+            <p className='text-[#137dc5] ml-4 text-sm md:text-base lg:text-lg xl:text-xl'>
               {`Peak : £${data["31"].slice(-4)}`} <br />
               <br />
               (Monday to Friday from 06:30 to 09:30) <br />
@@ -159,7 +159,7 @@ export default function Home() {
           <br />
           <h3 className='text-[#137dc5] text-2xl ml-2'>Unorthodox fare:</h3>
           {data["84"] && // Will only show if data[84] is available
-            <p className='text-[#137dc5] text-2x ml-4'>
+            <p className='text-[#137dc5]  ml-4 text-sm md:text-base lg:text-lg xl:text-xl'>
               {`Peak : £${data["84"].slice(-4)}`} <br />
               <br />
               (Monday to Friday from 06:30 to 09:30) <br />
@@ -171,7 +171,6 @@ export default function Home() {
               <br/>
               {`${data["103"]}`} <br />
             </p>
-           
           }
         </div>
       </div>
