@@ -4,3 +4,6 @@ export interface CheapTflSvgProps {
     height?: string;
   }
 
+ export interface FareData {
+    [key: string]: string;
+  }
