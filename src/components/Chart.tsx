@@ -86,7 +86,7 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
             },
         ];
         setSeries(series);
-    }, []);
+    }, [stationsList]);
 
 
 

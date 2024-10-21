@@ -157,6 +157,7 @@ export default function Home() {
       {searchScreen_h === "h-[20vh]" &&
         <div className='flex'>
           <div className='h-[70vh] w-[60vw]'>
+            <h2 className='text-[#137dc5] text-2xl text-center'>Journey</h2>
             {
               stationsList &&
             <Chart {...stationsList} />
