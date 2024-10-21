@@ -14,6 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import Chart from "react-apexcharts";
+
 
 
 export default function Home() {
@@ -31,6 +33,78 @@ export default function Home() {
   const [data, setData] = useState<FareData>({});
   const [searchScreen_h, setSearchScreen_h] = useState("h-[100vh]");
   const [svgprops, setSvgProps] = useState<CheapTflSvgProps>({});
+
+
+  const series = [
+    {
+      name: "Sales",
+      data: [
+        { x: "Jan", y: 30, name: "John" },
+        { x: "Feb", y: 40, name: "Doe" },
+        { x: "Mar", y: 35, name: "Anna" },
+        { x: "Apr", y: 50, name: "Tom" },
+        { x: "May", y: 60, name: "Alex" },
+      ],
+    },
+  ];
+
+  const options_o = {
+    chart: {
+      id: "line-chart",
+      toolbar: {
+        show: false, // Hide the toolbar (zoom, pan, etc.)
+      },
+    },
+    xaxis: {
+      type: "category",
+      labels: {
+        show: false, // Hide x-axis labels
+      },
+      axisBorder: {
+        show: false, // Hide the x-axis border line
+      },
+      axisTicks: {
+        show: false, // Hide x-axis ticks
+      },
+    },
+    yaxis: {
+      show: false, // Hide the y-axis
+    },
+    grid: {
+      show: false, // Remove grid lines
+    },
+    markers: {
+      size: 6,
+      hover: {
+        sizeOffset: 3,
+      },
+    },
+    dataLabels: {
+      enabled: true,
+      formatter: function (val, opts) {
+        // Get the marker name from the data series
+        return opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].name;
+      },
+      style: {
+        fontSize: "12px",
+        colors: ["#000"],
+      },
+      background: {
+        enabled: true,
+        borderRadius: 2,
+      },
+    },
+    stroke: {
+      curve: "smooth" as "smooth",
+    },
+    tooltip: {
+      enabled: false, // Disable tooltips
+    },
+    legend: {
+      show: false, // Hide legend
+    },
+  };
+
 
 
 
@@ -90,6 +164,7 @@ export default function Home() {
   const createMapOfStations = (sentence:string) => {
     let stations = sentence.split("interchanging at ")[1].split(" and ");
     stations = stations.flatMap((station) => station.split(","));
+    stations = [fromOption, ...stations, toOption];
     return stations;
  }
 
@@ -147,6 +222,7 @@ export default function Home() {
       <div className='flex'>
         <div className='h-[70vh] w-[60vw]'>
 
+        <Chart options={options_o} series={series} type="line" height={350} />
 
         </div>
 
