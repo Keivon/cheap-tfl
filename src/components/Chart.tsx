@@ -96,7 +96,7 @@ const Chart: React.FC<ChartProps> = ( {stationsList} ) => {
               show: false, // Remove grid lines
             },
             markers: {
-              size: 6,
+              size: 9,
               hover: {
                 sizeOffset: 3,
               },

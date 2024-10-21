@@ -76,7 +76,11 @@ export default function Home() {
           }
           setData(data);
           console.log(data);
+          if (data["103"]){
           setStationsList({ stationsList:createMapOfStations(data["103"])});
+          } else {
+            setStationsList({ stationsList:[fromOption, toOption]});
+          }
           if (svgprops.width !== "58.5892886390718") {
             changeViewOnSearch();
           }
