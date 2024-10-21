@@ -52,9 +52,8 @@ export default function Home() {
   }, [to]);
 
   const search = async () => {
-    console.log(fromOption, toOption);
+
     if (fromOption && toOption) {
-      //fetch data
       console.log("fetching data");
       fetch("https://cheap-tfl.keivon-991.workers.dev/api", {
         method: "POST",
@@ -65,14 +64,13 @@ export default function Home() {
       })
         .then((response) => response.json())
         .then((data) => {
-          //do a check here to see if data is string or object
+          
           if (typeof data === "string") {
             console.log("No data available");
             return
           }
           setData(data);
           console.log(data);
-          console.log(data["111"]);
           if (svgprops.width !== "58.5892886390718") {
             changeViewOnSearch();
           }
@@ -87,6 +85,13 @@ export default function Home() {
     setSearchScreen_h("h-[20vh]");
     setSvgProps({ width: "58.5892886390718", height: "104.915625" });
   }
+
+
+  const createMapOfStations = (sentence:string) => {
+    let stations = sentence.split("interchanging at ")[1].split(" and ");
+    stations = stations.flatMap((station) => station.split(","));
+    return stations;
+ }
 
 
 
