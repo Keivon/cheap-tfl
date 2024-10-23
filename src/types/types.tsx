@@ -5,7 +5,13 @@ export interface CheapTflSvgProps {
 }
 
 export interface ChartProps {
-    stationsList?: string[];
+    stationsList?: ChartPoint[];
+}
+
+
+export interface ChartPoint {
+    name?: string;
+    color?: string;
 }
 
 export interface FareData {
@@ -14,10 +20,11 @@ export interface FareData {
 
 export interface Series {
     name: string;
-    data: { x: string; y: number; name: string }[];
+    data: { x: string; y: number; name: string; color: string; }[];
 }
 
 export interface Options {
+    colors?: string[];
     chart: {
         id: string;
         toolbar: {
@@ -65,15 +72,16 @@ export interface Options {
         hover: {
             sizeOffset: number;
         };
+        colors?: string[];
     };
     dataLabels: {
         enabled: boolean;
         formatter: (val: number, opts: any) => string;
         style: {
             fontSize: string;
-            colors: string[];
+            colors:string[];
         };
-        background: {
+        background?: {
             enabled: boolean;
             borderRadius: number;
         };
@@ -87,4 +95,5 @@ export interface Options {
     legend: {
         show: boolean;
     };
+   
 }

@@ -1,0 +1,15 @@
+{
+  "name": "stations-wasm",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "stations_wasm_bg.wasm",
+    "stations_wasm.js",
+    "stations_wasm.d.ts"
+  ],
+  "main": "stations_wasm.js",
+  "types": "stations_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import LineChart from "react-apexcharts";
-import { ChartProps, Options, Series } from '@/types/types';
+import { ChartProps, ChartPoint, Options, Series } from '@/types/types';
 
 const Chart: React.FC<ChartProps> = ({ stationsList }) => {
 
@@ -11,6 +11,22 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
 
 
     useEffect(() => {
+       
+        const series = [
+            {
+                name: "Line 1",
+                data: stationsList?.map((station, index) => (
+                    {
+                    x: index.toString(),
+                    y: Math.floor(index * 10),
+                    name: station.name || "Unknown",
+                    color: station.color || "#000000",
+                })) || [],
+            },
+        ];
+        setSeries(series);
+
+
         const options = {
             chart: {
                 id: "line-chart",
@@ -43,11 +59,12 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
                   },
             },
             markers: {
-                size: 9,
+                size: 6,
                 hover: {
                     sizeOffset: 3,
                 },
             },
+            
             dataLabels: {
                 enabled: true,
                 formatter: function (val: any, opts: any) {
@@ -56,11 +73,7 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
                 },
                 style: {
                     fontSize: "12px",
-                    colors: ["#000"],
-                },
-                background: {
-                    enabled: true,
-                    borderRadius: 2,
+                    colors: series[0].data.map((point) => point.color),
                 },
             },
             stroke: {
@@ -75,17 +88,6 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
         };
         setOptions(options);
 
-        const series = [
-            {
-                name: "Line 1",
-                data: stationsList?.map((station, index) => ({
-                    x: index.toString(),
-                    y: Math.floor(index * 10),
-                    name: station,
-                })) || [],
-            },
-        ];
-        setSeries(series);
     }, [stationsList]);
 
 

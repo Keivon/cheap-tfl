@@ -1,7 +1,7 @@
 "use client"
 
 import CheapTflSvg from '@/components/CheapTflSvg';
-import { CheapTflSvgProps, FareData, ChartProps } from '@/types/types';
+import { CheapTflSvgProps, FareData, ChartProps, ChartPoint } from '@/types/types';
 import { useState, useEffect } from 'react';
 import init, { find_closest_string } from "@/lib/pkg";
 import { Button } from "@/components/ui/button"
@@ -77,9 +77,9 @@ export default function Home() {
           setData(data);
           console.log(data);
           if (data["103"]){
-          setStationsList({ stationsList:createMapOfStations(data["103"])});
+          setStationsList({stationsList:[...addcolor(createMapOfStations(data["103"]))]});
           } else {
-            setStationsList({ stationsList:[fromOption, toOption]});
+            setStationsList({ stationsList:[{name:fromOption, color:"#000000"}, {name:toOption, color: "#000000"}] });
           }
           if (svgprops.width !== "58.5892886390718") {
             changeViewOnSearch();
@@ -104,6 +104,17 @@ export default function Home() {
     return stations;
   }
 
+  //add pink color to stations that are not the start or end station and return an array of ChartPoint
+  const addcolor = (stations: string[]): ChartPoint[] => {
+    return stations.map((station) => {
+      if (station === fromOption || station === toOption) {
+        return { name: station, color: "#000000" };
+      } else {
+        return { name: station, color: "#fb9c2a" };
+      }
+    });
+  }
+ 
 
 
   return (
