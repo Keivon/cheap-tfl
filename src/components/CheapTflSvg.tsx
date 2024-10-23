@@ -1,4 +1,4 @@
-
+"use client"
 import {CheapTflSvgProps} from '@/types/types';
   
   const CheapTflSvg: React.FC<CheapTflSvgProps> = ({ width = "258.589px", height = "304.916px" }) => (

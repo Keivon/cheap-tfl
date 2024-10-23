@@ -1,4 +1,4 @@
-
+"use client"
 export interface CheapTflSvgProps {
     width?: string;
     height?: string;
@@ -76,6 +76,7 @@ export interface Options {
     };
     dataLabels: {
         enabled: boolean;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         formatter: (val: number, opts: any) => string;
         style: {
             fontSize: string;

@@ -1,3 +1,4 @@
+"use client"
 let wasm;
 
 const cachedTextDecoder = (typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-8', { ignoreBOM: true, fatal: true }) : { decode: () => { throw Error('TextDecoder not available') } } );
@@ -183,6 +184,7 @@ function __wbg_get_imports() {
     return imports;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function __wbg_init_memory(imports, memory) {
 
 }

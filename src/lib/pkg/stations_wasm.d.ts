@@ -1,3 +1,4 @@
+"use client"
 /* tslint:disable */
 /* eslint-disable */
 /**

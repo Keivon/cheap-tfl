@@ -1,7 +1,7 @@
-
+"use client"
 import { useState, useEffect } from 'react';
 import LineChart from "react-apexcharts";
-import { ChartProps, ChartPoint, Options, Series } from '@/types/types';
+import { ChartProps, Options, Series } from '@/types/types';
 
 const Chart: React.FC<ChartProps> = ({ stationsList }) => {
 
@@ -35,7 +35,7 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
                 },
             },
             xaxis: {
-                type: "category" as "category",
+                type: "category" as const,
                 labels: {
                     show: false, // Hide x-axis labels
                 },
@@ -67,6 +67,7 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
             
             dataLabels: {
                 enabled: true,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 formatter: function (val: any, opts: any) {
                     // Get the marker name from the data series
                     return opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].name;
@@ -77,7 +78,7 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
                 },
             },
             stroke: {
-                curve: "smooth" as "smooth",
+                curve: "smooth" as const,
             },
             tooltip: {
                 enabled: false, // Disable tooltips
