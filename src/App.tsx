@@ -1,5 +1,3 @@
-"use client"
-
 import CheapTflSvg from '@/components/CheapTflSvg';
 import { CheapTflSvgProps, FareData, ChartProps, ChartPoint } from '@/types/types';
 import { useState, useEffect } from 'react';
