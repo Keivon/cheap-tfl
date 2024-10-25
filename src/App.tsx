@@ -129,7 +129,7 @@ export default function Home() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <Input type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) => setFrom(e.target.value)} />
+                <Input autoFocus type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) => setFrom(e.target.value)} />
                 {
                   stationsFrom.map((station, index) => (
                     <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
@@ -145,7 +145,7 @@ export default function Home() {
             </SelectTrigger>
             <SelectContent >
               <SelectGroup>
-                <Input type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) => setTo(e.target.value)} />
+                <Input autoFocus type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) => setTo(e.target.value)} />
                 {
                   stationsTo.map((station, index) => (
                     <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
