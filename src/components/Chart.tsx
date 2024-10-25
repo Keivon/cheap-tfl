@@ -68,7 +68,7 @@ const Chart: React.FC<ChartProps> = ({ stationsList }) => {
             dataLabels: {
                 enabled: true,
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                formatter: function (val: any, opts: any) {
+                formatter: function (_val: any, opts: any) {
                     // Get the marker name from the data series
                     return opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].name;
                 },
