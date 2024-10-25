@@ -54,7 +54,8 @@ export default function Home() {
     updateStations();
   }, [to]);
 
-  const search = async () => {
+  const search = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
 
     if (fromOption && toOption) {
       console.log("fetching data");
@@ -73,7 +74,6 @@ export default function Home() {
             return
           }
           setData(data);
-          console.log(data);
           if (data["103"]){
           setStationsList({stationsList:[...addcolor(createMapOfStations(data["103"]))]});
           } else {
@@ -102,7 +102,6 @@ export default function Home() {
     return stations;
   }
 
-  //add pink color to stations that are not the start or end station and return an array of ChartPoint
   const addcolor = (stations: string[]): ChartPoint[] => {
     return stations.map((station) => {
       if (station === fromOption || station === toOption) {
@@ -117,13 +116,13 @@ export default function Home() {
 
   return (
     <div>
-      <div className={`flex justify-center items-center transition-all duration-700 ease-in-out ${searchScreen_h} ? 'h-100vh' : h-20vh`}>
+      <form  onSubmit={search} className={`flex justify-center items-center transition-all duration-700 ease-in-out ${searchScreen_h} ? 'h-100vh' : h-20vh`}>
         <div className='text-center'>
           <CheapTflSvg {...svgprops} />
           <br />
         </div>
         <div className='flex space-x-4 ml-9'>
-          <Select onValueChange={(value) => setFromOption(value)}>
+          <Select required onValueChange={(value) => setFromOption(value)}>
             <SelectTrigger className="w-[180px] text-[#137dc5]">
               <SelectValue placeholder="From" />
             </SelectTrigger>
@@ -139,7 +138,7 @@ export default function Home() {
             </SelectContent>
           </Select>
 
-          <Select onValueChange={(value) => setToOption(value)}>
+          <Select required onValueChange={(value) => setToOption(value)}>
             <SelectTrigger className="w-[180px] text-[#137dc5] ">
               <SelectValue placeholder="To" />
             </SelectTrigger>
@@ -154,15 +153,13 @@ export default function Home() {
               </SelectGroup>
             </SelectContent>
           </Select>
-
-
         </div>
         <div className=" ml-9 ">
-          <Button onClick={search} className='bg-[#fb9c2a] hover:bg-[#fb9c2a] text-white'>
+          <Button  className='bg-[#fb9c2a] hover:bg-[#fb9c2a] text-white'>
             Search
           </Button>
         </div>
-      </div>
+        </form>
       {searchScreen_h === "h-[20vh]" &&  data["10"]?
       <div className='flex justify-center items-center'>
         <p className='text-[#137dc5] m-6 text-2xl'>{data["10"]}</p>
