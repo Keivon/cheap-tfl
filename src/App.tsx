@@ -127,7 +127,7 @@ export default function Home() {
             <SelectTrigger className="w-[180px] text-[#137dc5]">
               <SelectValue placeholder="From" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className='bg-white'>
               <SelectGroup>
                 <Input autoFocus type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) => setFrom(e.target.value)} />
                 {
@@ -143,7 +143,7 @@ export default function Home() {
             <SelectTrigger className="w-[180px] text-[#137dc5] ">
               <SelectValue placeholder="To" />
             </SelectTrigger>
-            <SelectContent >
+            <SelectContent className='bg-white'>
               <SelectGroup>
                 <Input autoFocus type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) => setTo(e.target.value)} />
                 {
