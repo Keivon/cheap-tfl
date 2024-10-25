@@ -163,7 +163,11 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      {searchScreen_h === "h-[20vh]" &&
+      {searchScreen_h === "h-[20vh]" &&  data["10"]?
+      <div className='flex justify-center items-center'>
+        <p className='text-[#137dc5] m-6 text-2xl'>{data["10"]}</p>
+        </div>
+      :
         <div className='flex'>
           <div className='h-[70vh] w-[60vw]'>
             <h2 className='text-[#137dc5] text-2xl text-center'>Journey</h2>
