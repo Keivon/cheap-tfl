@@ -128,7 +128,7 @@ export default function Home() {
             </SelectTrigger>
             <SelectContent className='bg-white'>
               <SelectGroup>
-                <Input autoFocus type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) => setFrom(e.target.value)} />
+                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) => setFrom(e.target.value)} />
                 {
                   stationsFrom.map((station, index) => (
                     <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
@@ -144,7 +144,7 @@ export default function Home() {
             </SelectTrigger>
             <SelectContent className='bg-white'>
               <SelectGroup>
-                <Input autoFocus type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) => setTo(e.target.value)} />
+                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) => setTo(e.target.value)} />
                 {
                   stationsTo.map((station, index) => (
                     <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
@@ -160,7 +160,7 @@ export default function Home() {
           </Button>
         </div>
         </form>
-      {searchScreen_h === "h-[20vh]" &&  data["10"]?
+      {searchScreen_h === "h-[20vh]" ? data["10"]?
       <div className='flex justify-center items-center'>
         <p className='text-[#137dc5] m-6 text-2xl'>{data["10"]}</p>
         </div>
@@ -203,7 +203,7 @@ export default function Home() {
               </p>
             }
           </div>
-        </div>
+        </div> : null
       }
 
     </div>
