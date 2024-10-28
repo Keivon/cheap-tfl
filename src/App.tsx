@@ -43,7 +43,7 @@ export default function Home() {
     }
      const timeoutId = setTimeout(() => {
       updateStations();
-    }, 500);
+    }, 50);
     return () => {
       clearTimeout(timeoutId);
     };
@@ -58,7 +58,7 @@ export default function Home() {
     }
      const timeoutId = setTimeout(() => {
       updateStations();
-    }, 500);
+    }, 50);
     return () => {
       clearTimeout(timeoutId);
     };
@@ -132,13 +132,17 @@ export default function Home() {
           <br />
         </div>
         <div className='flex space-x-4 ml-9'>
-          <Select required onValueChange={(value) => setFromOption(value)}>
+          <Select required value={fromOption} onValueChange={(value) => {
+            setFromOption(value);
+          }}>
             <SelectTrigger className="w-[180px] text-[#137dc5]">
               <SelectValue placeholder="From" />
             </SelectTrigger>
             <SelectContent className='bg-white'>
               <SelectGroup>
-                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) => setFrom(e.target.value)} />
+                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) =>{ 
+                  setFromOption("");
+                  setFrom(e.target.value)}} />
                 {
                   stationsFrom.map((station, index) => (
                     <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
@@ -148,13 +152,16 @@ export default function Home() {
             </SelectContent>
           </Select>
 
-          <Select required onValueChange={(value) => setToOption(value)}>
+          <Select required value={toOption} onValueChange={(value) =>{ 
+            setToOption(value)}}>
             <SelectTrigger className="w-[180px] text-[#137dc5] ">
               <SelectValue placeholder="To" />
             </SelectTrigger>
             <SelectContent className='bg-white'>
               <SelectGroup>
-                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) => setTo(e.target.value)} />
+                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) =>{ 
+                  setToOption("");
+                  setTo(e.target.value)}} />
                 {
                   stationsTo.map((station, index) => (
                     <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
