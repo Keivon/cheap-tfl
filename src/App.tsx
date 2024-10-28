@@ -126,12 +126,12 @@ export default function Home() {
 
   return (
     <div>
-      <form  onSubmit={search} className={`flex justify-center items-center transition-all duration-700 ease-in-out ${searchScreen_h} ? 'h-100vh' : h-20vh`}>
-        <div className='text-center'>
+      <form  onSubmit={search} className={`flex flex-col md:flex-row justify-center items-center transition-all duration-700 ease-in-out ${searchScreen_h} ? 'h-100vh' : h-20vh`}>
+        <div className='text-center mt-[10vh] md:mt-8 '>
           <CheapTflSvg {...svgprops} />
           <br />
         </div>
-        <div className='flex space-x-4 ml-9'>
+        <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ml-0 md:ml-9'>
           <Select required value={fromOption} onValueChange={(value) => {
             setFromOption(value);
           }}>
@@ -171,19 +171,19 @@ export default function Home() {
             </SelectContent>
           </Select>
         </div>
-        <div className=" ml-9 ">
+        <div className="mt-4 md:mt-0 md:ml-9 ">
           <Button  className='bg-[#fb9c2a] hover:bg-[#fb9c2a] text-white'>
             Search
           </Button>
         </div>
         </form>
       {searchScreen_h === "h-[20vh]" ? data["10"]?
-      <div className='flex justify-center items-center'>
+      <div className='flex mt-[10vh] md:mt-0 justify-center items-center'>
         <p className='text-[#137dc5] m-6 text-2xl'>{data["10"]}</p>
         </div>
       :
-        <div className='flex'>
-          <div className='h-[70vh] w-[60vw]'>
+        <div className='flex flex-col md:flex-row mt-[12vh] md:mt-0'>
+          <div className=' h-[30vh] w-[90vw]  md:h-[70vh] md:w-[60vw]'>
             <h2 className='text-[#137dc5] text-2xl text-center'>Journey</h2>
             {
               stationsList &&
@@ -191,7 +191,7 @@ export default function Home() {
             }
           </div>
 
-          <div className='h-[70vh] w-[40vw] border-l border-[#fb9c2a] overflow-y-scroll'>
+          <div className=' w-[90vw]  md:h-[70vh] md:w-[40vw] border-l border-[#fb9c2a] overflow-y-scroll'>
             <h2 className='text-[#137dc5] text-2xl text-center'>Results</h2>
             <br />
             <h3 className='text-[#137dc5] text-2xl ml-2'>Standard fare:</h3>
