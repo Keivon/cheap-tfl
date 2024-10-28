@@ -19,7 +19,7 @@ import Chart from "@/components/Chart"
 export default function Home() {
 
 
-
+  const [searchbool, setSearchBool] = useState(false);
   const [stationsFrom, setStationsFrom] = useState<string[]>([]);
   const [stationsTo, setStationsTo] = useState<string[]>([]);
   const [stationsList, setStationsList] = useState<ChartProps>({});
@@ -42,16 +42,27 @@ export default function Home() {
       await init({});
       setStationsFrom(find_closest_string(from) as string[]);
     }
-    updateStations();
+     const timeoutId = setTimeout(() => {
+      updateStations();
+    }, 500);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+    
   }, [from]);
 
 
   useEffect(() => {
     async function updateStations() {
       await init({});
-      setStationsTo(find_closest_string(to) as string[]);
+      setStationsFrom(find_closest_string(to) as string[]);
     }
-    updateStations();
+     const timeoutId = setTimeout(() => {
+      updateStations();
+    }, 500);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [to]);
 
   const search = async (e: { preventDefault: () => void; }) => {
