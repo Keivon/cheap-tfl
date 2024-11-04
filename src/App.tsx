@@ -71,6 +71,10 @@ export default function Home() {
       console.log("fetching data");
       fetch("https://cheap-tfl.keivon-991.workers.dev/api", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer 123"
+        },
         body: JSON.stringify({
           "to": toOption,
           "from": fromOption
