@@ -290,14 +290,14 @@ export default function Home() {
                     </div>
 
                     {hasAltFare && (
-                      <div className="rounded-2xl p-6 bg-purple-50 ring-1 ring-purple-100">
+                      <div className="rounded-2xl p-6 bg-[#fb9c2a]/5 ring-1 ring-[#fb9c2a]/60">
                         <div className="flex items-start justify-between">
-                          <div className="text-purple-700 font-medium">Unorthodox Fare</div>
+                          <div className="text-[#fb9c2a]/100 font-medium">Unorthodox Fare</div>
                             <div className="text-right">
                             <div className="flex flex-col items-end space-y-1">
                               <div className="flex items-baseline space-x-2">
                               <span className="text-xs text-gray-500">Peak</span>
-                              <span className="text-purple-700 font-semibold">{money(peakAlt)}</span>
+                              <span className="text-[#fb9c2a]/100 font-semibold">{money(peakAlt)}</span>
                               </div>
                               <div className="flex items-baseline space-x-2">
                               <span className="text-xs text-gray-500">Off-peak</span>
@@ -326,7 +326,7 @@ export default function Home() {
                         <PriceBar label="Standard" value={peakStandard} max={maxPeak} colorClass="bg-blue-500" />
                         {hasAltFare && (
                           <div className="mt-3">
-                            <PriceBar label="Unorthodox" value={peakAlt} max={maxPeak} colorClass="bg-purple-500" />
+                            <PriceBar label="Unorthodox" value={peakAlt} max={maxPeak} colorClass="bg-[#fb9c2a]/100" />
                           </div>
                         )}
                       </div>
@@ -335,7 +335,7 @@ export default function Home() {
                         <PriceBar label="Standard" value={offStandard} max={maxOff} colorClass="bg-blue-500" />
                         {hasAltFare && (
                           <div className="mt-3">
-                            <PriceBar label="Unorthodox" value={offAlt} max={maxOff} colorClass="bg-purple-500" />
+                            <PriceBar label="Unorthodox" value={offAlt} max={maxOff} colorClass="bg-[#fb9c2a]/100" />
                           </div>
                         )}
                       </div>
