@@ -174,50 +174,55 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <div className='mb-40 md:mb-0'>
       <form onSubmit={search} className={`flex flex-col md:flex-row justify-center items-center transition-all duration-700 ease-in-out ${searchScreen_h} ? 'h-100vh' : h-20vh`} aria-busy={isSearching}>
-        <div className='text-center mt-[10vh] md:mt-8 '>
+        <div className='text-center mt-[25vh] md:mt-8 '>
           <CheapTflSvg {...svgprops} />
           <br />
         </div>
-        <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ml-0 md:ml-9'>
-          <Select required value={fromOption} onValueChange={(value) => {
-            setFromOption(value);
-          }}>
-            <SelectTrigger className="w-[180px] text-[#137dc5]">
-              <SelectValue placeholder="From" />
-            </SelectTrigger>
-            <SelectContent className='bg-white'>
-              <SelectGroup>
-                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) =>{ 
-                  setFromOption("");
-                  setFrom(e.target.value)}} />
-                {
-                  stationsFrom.map((station, index) => (
-                    <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
-                  ))
-                }
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+        <div className='flex space-x-1 md:flex-row md:space-x-4 ml-0 md:ml-9'>
+          <div className="mb-2 md:mb-0">
+            <Select required value={fromOption} onValueChange={(value) => {
+              setFromOption(value);
+            }}>
+              <SelectTrigger className="w-[180px] text-[#137dc5]">
+                <SelectValue placeholder="From" />
+              </SelectTrigger>
+              <SelectContent className='bg-white'>
+                <SelectGroup>
+                  <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={from} onChange={(e) =>{ 
+                    setFromOption("");
+                    setFrom(e.target.value)}} />
+                  {
+                    stationsFrom.map((station, index) => (
+                      <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
+                    ))
+                  }
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
 
-          <Select required value={toOption} onValueChange={(value) =>{ 
-            setToOption(value)}}>
-            <SelectTrigger className="w-</SelectItem>[180px] text-[#137dc5] ">
-              <SelectValue placeholder="To" />
-            </SelectTrigger>
-            <SelectContent className='bg-white'>
-              <SelectGroup>
-                <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) =>{ 
-                  setToOption("");
-                  setTo(e.target.value)}} />
-                {
-                  stationsTo.map((station, index) => (
-                    <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
-                  ))
-                }
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <div>
+            <Select required value={toOption} onValueChange={(value) =>{ 
+              setToOption(value)}}>
+              <SelectTrigger className="w-</SelectItem>[180px] text-[#137dc5] ">
+                <SelectValue placeholder="To" />
+              </SelectTrigger>
+              <SelectContent className='bg-white'>
+                <SelectGroup>
+                  <Input ref={input => input && input.focus()} type="text" placeholder="Search" className="w-full p-2 text-[#137dc5]" value={to} onChange={(e) =>{ 
+                    setToOption("");
+                    setTo(e.target.value)}} />
+                  {
+                    stationsTo.map((station, index) => (
+                      <SelectItem key={index} value={station} className='text-[#137dc5]'>{station}</SelectItem>
+                    ))
+                  }
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
         <div className="mt-4 md:mt-0 md:ml-9 ">
           <Button disabled={isSearching} className='bg-[#fb9c2a] hover:bg-[#fb9c2a] text-white'>
@@ -225,6 +230,7 @@ export default function Home() {
           </Button>
         </div>
       </form>
+      </div>
 
       {searchScreen_h === "h-[20vh]" ? (
         isSearching ? (
@@ -287,10 +293,18 @@ export default function Home() {
                       <div className="rounded-2xl p-6 bg-purple-50 ring-1 ring-purple-100">
                         <div className="flex items-start justify-between">
                           <div className="text-purple-700 font-medium">Unorthodox Fare</div>
-                          <div className="text-right">
-                            <div className="text-purple-700 font-semibold">{money(peakAlt)}</div>
-                            <div className="text-green-600 font-semibold">{money(offAlt)}</div>
-                          </div>
+                            <div className="text-right">
+                            <div className="flex flex-col items-end space-y-1">
+                              <div className="flex items-baseline space-x-2">
+                              <span className="text-xs text-gray-500">Peak</span>
+                              <span className="text-purple-700 font-semibold">{money(peakAlt)}</span>
+                              </div>
+                              <div className="flex items-baseline space-x-2">
+                              <span className="text-xs text-gray-500">Off-peak</span>
+                              <span className="text-green-600 font-semibold">{money(offAlt)}</span>
+                              </div>
+                            </div>
+                            </div>
                         </div>
                         <div className="mt-3 text-xs text-gray-600">
                           Monday to Friday from 06:30 to 09:30
